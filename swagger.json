@@ -7,7 +7,7 @@
   },
   "host": "project2-td9r.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "paths": {
     "/": {
       "get": {
