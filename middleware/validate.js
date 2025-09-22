@@ -22,6 +22,28 @@ const saveUser = (req, res, next) => {
 	});
 };
 
+const saveProduct = (req, res, next) => {
+	const validationRule = {
+		name: 'required|string',
+		price: 'required|numeric',
+		description: 'string',
+		category: 'required|string'
+	};
+
+	validator(req.body, validationRule, {}, (err, status) => {
+		if (!status) {
+			res.status(412).send({
+				success: false,
+				message: 'Validation failed',
+				data: err
+			});
+		} else {
+			next();
+		}
+	});
+};
+
 module.exports = {
-	saveUser
+	saveUser,
+	saveProduct
 };

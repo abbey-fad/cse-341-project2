@@ -1,13 +1,15 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Users API",
-    "description": "Users API",
+    "title": "Users & Products API",
+    "description": "Users & Products API",
     "version": "1.0.0"
   },
   "host": "project2-td9r.onrender.com",
   "basePath": "/",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/": {
       "get": {
@@ -24,8 +26,10 @@
     },
     "/users/": {
       "get": {
-        "tags": ["Users"],
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "description": "Get all users",
         "responses": {
           "200": {
             "description": "OK"
@@ -39,7 +43,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Create a new user",
         "parameters": [
           {
             "name": "body",
@@ -67,8 +71,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "201": {
+            "description": "Created"
           },
           "500": {
             "description": "Internal Server Error"
@@ -81,7 +85,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Get one user by ID",
         "parameters": [
           {
             "name": "id",
@@ -96,9 +100,6 @@
           },
           "404": {
             "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -106,7 +107,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Update a user",
         "parameters": [
           {
             "name": "id",
@@ -152,7 +153,155 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Delete a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/products/": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Get all products",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Create a new product",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Laptop"
+                },
+                "price": {
+                  "example": "1200"
+                },
+                "description": {
+                  "example": "A fast laptop"
+                },
+                "category": {
+                  "example": "Electronics"
+                },
+                "inStock": {
+                  "example": "true"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Get one product by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Update a product",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Laptop"
+                },
+                "price": {
+                  "example": "1200"
+                },
+                "description": {
+                  "example": "A fast laptop"
+                },
+                "category": {
+                  "example": "Electronics"
+                },
+                "inStock": {
+                  "example": "true"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Delete a product",
         "parameters": [
           {
             "name": "id",
