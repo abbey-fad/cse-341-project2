@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
 const passport = require('passport');
 const session = require('express-session');
-const GithubStrategy = require('passport-github2').Strategy;
+const Github = require('passport-github2').Strategy;
 
 
 const app = express();
